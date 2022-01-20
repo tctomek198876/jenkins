@@ -5,7 +5,10 @@ pipeline {
                 booleanParam(name: 'ELK', defaultValue: false, description: 'Checkbox parameter', )
                 //choice(choices: 'sprint_6\nsprint_7\nsprint_8\nSprint_9', description: 'Select branch to Build', name: 'Branch')
                 //choice(choices: 'No\nYes', , name: 'choice2')
-				stringParam(name: 'branch', defaultValue: master, description: 'Checkbox parameter', )
+				def gettags = ("git ls-remote -t -h https://tctomek198876:198876Tctomek$@github.com/tctomek198876/jenkins").execute() 
+				return gettags.text.readLines().collect { 
+				  it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '').replaceAll("\\^\\{\\}", '')
+				}				
               }
          
          stages {
