@@ -5,7 +5,7 @@ pipeline {
                 booleanParam(name: 'ELK', defaultValue: false, description: 'Checkbox parameter', )
                 //choice(choices: 'sprint_6\nsprint_7\nsprint_8\nSprint_9', description: 'Select branch to Build', name: 'Branch')
                 //choice(choices: 'No\nYes', , name: 'choice2')
-				stringParam(name: 'branch', defaultValue: master, description: 'Checkbox parameter', )
+				stringParam('myParameterName', 'my default stringParam value', 'my description')
               }
          
          stages {
